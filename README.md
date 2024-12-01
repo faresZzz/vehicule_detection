@@ -11,7 +11,7 @@
 
 ## Introduction
 
-The Vehicle Detection project aims to identify and classify vehicles in images or video streams using machine learning techniques. This project leverages various computer vision algorithms and deep learning models to accurately detect vehicles in different environments and conditions.
+The Vehicle Detection project aims to detect and count vehicles in images or video streams of roads using computer vision techniques. This project leverages various algorithms to accurately detect vehicles in different environments and conditions.
 
 ## Running the Scripts
 
@@ -53,6 +53,7 @@ vehicule_detection/
 │
 ├── .gitignore  # Fichier pour ignorer certains fichiers dans Git
 ├── README.md  # Ce fichier
+├── pyproject.toml # setup file to build project ass package
 └── requirements.txt  # Dépendances Python
 ```
 
