@@ -2,7 +2,7 @@
 name = "vehicule_detection"
 version = "0.1.0"
 description = "Small project for vehicule_detection using computer vision"
-module = "src/vehicule_detection"
+module = "vehicule_detection"
 
 [build-system]
 build-backend = "flit_core.buildapi"
