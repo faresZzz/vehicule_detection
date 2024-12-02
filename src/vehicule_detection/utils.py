@@ -216,4 +216,6 @@ class FrameVideoHandler:
         # plot the image
         plt.imshow(cv2.cvtColor(image, color.value))
         plt.title(f"Frame: {str(image)}")
-        plt.show()
+        plt.show(block=False)  # plot image without blocking the code
+        plt.pause(3)  # wait 3 seconds
+        plt.close()  # close the plot
