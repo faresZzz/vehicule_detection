@@ -32,7 +32,9 @@ jobs:
 
             pip install -r requirements.txt
             pip install -e .
-            
+          
+        - name: Set PYTHONPATH
+          run: echo "PYTHONPATH=$PYTHONPATH:$(pwd)" >> $GITHUB_ENV
 
         - name: Run tests
           run: |
