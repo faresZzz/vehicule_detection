@@ -1,41 +1,28 @@
-name: Run Tests
+name: Build Docker Container and Test Python Code
 
 on:
-    push:
-        branches:
-            - main
-    pull_request:
-        branches:
-            - main
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
 jobs:
-    test:
-        runs-on: ubuntu-latest
+  test:
+    runs-on: ubuntu-latest
 
-        strategy:
-            matrix:
-                python-version: [3.13]
+    steps:
+    # Étape 1 : Récupérer le code source
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-        steps:
-        - name: Checkout repository
-          uses: actions/checkout@v4
+    # Étape 2 : Construire l'image Docker
+    - name: Build Docker container
+      run: |
+        docker build -t python-app .
 
-        - name: Set up Python ${{ matrix.python-version }}
-          uses: actions/setup-python@v4
-          with:
-            python-version: ${{ matrix.python-version }}
-
-        - name: Install dependencies
-          run: |
-            python -m venv venv
-            source venv/bin/activate
-            pip install --upgrade pip
-
-            pip install -r requirements.txt
-            pip install -e .
-          
-        - name: Set PYTHONPATH
-          run: echo "PYTHONPATH=$PYTHONPATH:$(pwd)" >> $GITHUB_ENV
-
-        - name: Run tests
-          run: |
-            python -m unittest discover -s ./tests 
+    # Étape 3 : Exécuter les tests à l'intérieur du conteneur
+    - name: Run tests inside Docker container
+      run: |
+        docker run --rm python-app python -m unittest discover -s ./tests
