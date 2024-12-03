@@ -9,8 +9,7 @@ COPY . .
 
 # Installer les dépendances
 RUN pip install --no-cache-dir --upgrade pip
-RUN python3 -m venv venv
-RUN source venv/bin/activate
+
 RUN pip install -r requirements.txt
 # Installer le projet en mode éditable
 RUN pip install -e .
