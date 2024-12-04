@@ -14,4 +14,5 @@ RUN pip install -r requirements.txt
 # Installer le projet en mode éditable
 RUN pip install -e .
 # Définir la commande par défaut (facultatif, peut être remplacé dans le workflow)
+CMD ["ls", "."]
 CMD ["python", "-m", "unittest", "discover", "-s", "./tests"]

@@ -25,4 +25,4 @@ jobs:
     # Étape 3 : Exécuter les tests à l'intérieur du conteneur
     - name: Run tests inside Docker container
       run: |
-        docker run --rm python-app python -m unittest discover -s ./tests
+        docker run --rm python-app
